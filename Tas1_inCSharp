@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FullCSharp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Shape circle = new CalledCircle(3, 5);
+            circle.Area();
+
+            Shape rectangle = new CalledRectangle(4, 6);
+            rectangle.Area();
+
+        }
+    }
+
+    
+abstract class Shape
+{
+    public abstract void Area();
+}
+
+class CalledCircle : Shape
+{
+    private readonly double pi = 3.14;
+    private int r;
+
+    public CalledCircle(double pi, int r) : base()
+    {
+        this.pi = pi;
+        this.r = r;
+    }
+
+    public override void Area()
+    {
+        Console.WriteLine($"Area of Circle is {pi * r * r}");
+    }
+}
+
+class CalledRectangle : Shape
+{
+    private int a;
+    private int b;
+
+    public CalledRectangle(int a, int b) : base()
+    {
+        this.a = a;
+        this.b = b;
+    }
+
+    public override void Area()
+    {
+        Console.WriteLine($"Area of Rectangle is {a * b}");
+    }
+}
+
+}
