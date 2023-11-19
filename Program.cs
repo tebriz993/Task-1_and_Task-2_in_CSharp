@@ -4,82 +4,93 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task1CSharp
+namespace Task2_CSharp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-VisaCard visacard1=new VisaCard(0,250,)
+            MasterCard mastercard1 = new MasterCard(1000,1234);
+            mastercard1.forMasterCardCheckBalance();
+
+            VisaCard visaCard1 = new VisaCard(1000,1232);
+            visaCard1.forVisaCardCheckBalance();
+
         }
 
     }
 
-        class interface IBankCard:VisaCard,MasterCard
-        {
-        public forVisaCardPaying();
-
-        public forVisaCardCheckBalance();
-
-        }
+     interface IBankCard 
+     {
+        void forVisaCardPaying();
+        void forVisaCardCheckBalance();
 
 
+        void forMasterCardPaying();
+        void forMasterCardCheckBalance();
 
-        class interface VisaCard
-        {
-        public int amount=0;
-        public int Paying_Amount;
+     }
+
+
+
+    class VisaCard
+    {
+        public readonly int amount = 1000;
+        public int forVisaCardPaying_Amount;
         public int End_Amount;
 
-        public VisaCard(int amount, int Paying_Amount)
+        public VisaCard(int amount, int forVisaCardPaying_Amount)
         {
             this.amount = amount;
-            this.Paying_Amount=Paying_Amount;
-            this.End_Amount = End_Amount;
+            this.forVisaCardPaying_Amount = forVisaCardPaying_Amount;
+
 
         }
 
         public void forVisaCardPaying()
         {
-            Console.WriteLine($"Visacard ucun Odenilen mebleg: {Paying_Amount}");
+            Console.WriteLine($"Visacard ucun Odenilen mebleg: {forVisaCardPaying_Amount}");
         }
 
         public void forVisaCardCheckBalance()
         {
-            Console.WriteLine($"Visacard ucun Son mebleg: {End_Amount}");
+            Console.WriteLine($"Visacard ucun Son mebleg: " + (amount + forVisaCardPaying_Amount));
         }
 
-        }
+    }
 
 
 
-        class interface MasterCard
-        {
-
-        public int amount=0;
-        public int Paying_Amount;
+    class MasterCard
+    {
+        public readonly int amount = 1000;
+        public int forMasterCardPaying_Amount;
         public int End_Amount;
 
-        public MasterCard(int amount, int Paying_Amount, int End_Amount)
+        public MasterCard(int amount, int forMasterCardPaying_Amount)
         {
             this.amount = amount;
-            this.Paying_Amount = Paying_Amount;
-            this.End_Amount = End_Amount;
+            this.forMasterCardPaying_Amount = forMasterCardPaying_Amount;
+
 
         }
 
         public void forMasterCardPaying()
         {
-            Console.WriteLine($"Mastercard ucun Odenilen mebleg: {Paying_Amount}");
+            Console.WriteLine($"Mastercard ucun Odenilen mebleg: {forMasterCardPaying_Amount}");
         }
 
         public void forMasterCardCheckBalance()
         {
-            Console.WriteLine($"Mastercard ucun Son mebleg: {End_Amount}");
+            Console.WriteLine($"Mastercard ucun Son mebleg: " + (amount + forMasterCardPaying_Amount));
         }
 
-        }
-    
+    }
 
-   
+
+
+
+
+
+
 }
